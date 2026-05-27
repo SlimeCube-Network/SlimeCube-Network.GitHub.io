@@ -8,6 +8,22 @@ SlimeCube Network Official Website, built using Next.js v16 and React.js v19. A 
 
 ---
 
+## Pull Request
+
+If you're a staff of SlimeCube Network, and there's a change on the website, and for some reason [PhobosID](https://github.com/PhobosID) won't answering or responding. Kindly do a Pull Request and I'll merge the changes. How to do PR:
+1. Fork this Repository.
+2. Use GitHub Desktop to Clone the Repository of your Fork to your computer.
+3. Use VS Studio Code to Open the Repository folder, and edit as you go.
+
+| Directories | Descriptions |
+| ``app/.../page.tsx`` or ``app/page.tsx`` | Handles the pages. |
+| ``components/Navigation.tsx`` | Handles the Navigation bar |
+| ``components/Footer.tsx`` | Handles the Footer bar |
+| ``app/error.tsx`` or ``app/global-error.tsx`` | Handles the 500 Error Pages |
+| ``app/not-found.tsx`` | Handles the 404 Error Pages |
+
+---
+
 ## License
 
 This website is licensed under the GNU General Public License v3.0. You're free to fork, modify, and distribute this code, but any derivative works must also use the GNU GPL-3.0 license. See [LICENSE](LICENSE.md) for more information.
