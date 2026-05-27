@@ -16,6 +16,7 @@ If you're a staff of SlimeCube Network, and there's a change on the website, and
 3. Use VS Studio Code to Open the Repository folder, and edit as you go.
 
 | Directories | Descriptions |
+|---|---|
 | ``app/.../page.tsx`` or ``app/page.tsx`` | Handles the pages. |
 | ``components/Navigation.tsx`` | Handles the Navigation bar |
 | ``components/Footer.tsx`` | Handles the Footer bar |
