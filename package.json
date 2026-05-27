@@ -1,0 +1,48 @@
+{
+  "name": "slimecube-website",
+  "version": "1.0.0",
+  "description": "Official website for SlimeCube Network. Built with Next.js and Tailwind CSS.",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "authors": [
+    {
+      "name": "Kristoff Liao",
+      "email": "phobosid@proton.me",
+      "url": "https://phobosid.github.io"
+    },
+    {
+      "name": "Shengwei Xiong",
+      "email": "contact@shiroharu.eu.org",
+      "url": "https://shiroharu.eu.org"
+    }
+    
+  ],
+  "license": "GPL-3.0",
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.0",
+    "@types/node": "25.9.1",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "4.3.0",
+    "typescript": "6.0.3"
+  },
+  "tags": [
+    "Economy", 
+    "Adventure", 
+    "SlimeFun", 
+    "SMP", 
+    "Survival"
+  ]
+}
