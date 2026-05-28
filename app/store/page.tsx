@@ -15,6 +15,7 @@ export default function StorePage() {
         <div className="container">
           <main className="slimecube-homepage">
             <h2 className="section-title"><span>Server Store</span></h2>
+            <h4 className="App">Special Discount for Eid Al-Adha! Valid Until 10th June 2026.</h4>
             <div className="badge-separator"></div>
                 <BadgesList />
             <div className="badge-separator"></div>

@@ -5,6 +5,7 @@ interface BadgeSpec {
   name: string;
   image: string;
   price: string;
+  discountedPrice?: string;
   features: string[];
 }
 
@@ -14,6 +15,7 @@ const badges: BadgeSpec[] = [
     name: 'ARCHDUKE',
     image: '/images/badge-archduke.webp',
     price: 'Rp. 20,000',
+    discountedPrice: 'Rp. 16,000',
     features: [
       'All Features on Citizen Badge',
       'Instantly Get 500K Money',
@@ -32,6 +34,7 @@ const badges: BadgeSpec[] = [
     name: 'PALADIN',
     image: '/images/badge-paladin.webp',
     price: 'Rp. 40,000',
+    discountedPrice: 'Rp. 32,000',
     features: [
       'All Features on Archduke Badge',
       'Instantly Get 700K Money',
@@ -50,6 +53,7 @@ const badges: BadgeSpec[] = [
     name: 'ORACLE',
     image: '/images/badge-oracle.webp',
     price: 'Rp. 75,000',
+    discountedPrice: 'Rp. 60,000',
     features: [
       'All Features on Paladin Badge',
       'Instantly Get 900K Money',
@@ -68,6 +72,7 @@ const badges: BadgeSpec[] = [
     name: 'GRAMETA',
     image: '/images/badge-grameta.webp',
     price: 'Rp. 120,000',
+    discountedPrice: 'Rp. 96,000',
     features: [
       'All Features on Oracle Badge',
       'Instantly Get 1M Money',
@@ -90,6 +95,7 @@ const badges: BadgeSpec[] = [
     name: 'XYNOMOZ',
     image: '/images/badge-xynomoz.webp',
     price: 'Rp. 150,000',
+    discountedPrice: 'Rp. 120,000',
     features: [
       'All Features on Grameta Badge',
       'Instantly Get 1.2M Money',
@@ -110,6 +116,7 @@ const badges: BadgeSpec[] = [
     name: 'CUSTOM',
     image: '/images/badge-custom.webp',
     price: 'Rp. 200,000',
+    discountedPrice: 'Rp. 160,000',
     features: [
       'Custom In-Game Prefix and Colors',
       'All Features on Xynomoz Badge',
@@ -139,6 +146,20 @@ export function BadgesList() {
               </div>
               <div className="badge-content">
                 <h3 className="badge-name">{badge.name}</h3>
+                <div className="badge-price">
+                  {badge.discountedPrice ? (
+                    <>
+                      <span className="original-price" style={{ textDecoration: 'line-through' }}>
+                        {badge.price}
+                      </span>
+                      <span className="discount-price" style={{ color: '#4CAF50', fontWeight: 'bold', marginLeft: '10px' }}>
+                        {badge.discountedPrice}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="badge-price-text">{badge.price}</span>
+                  )}
+                </div>
                 <ul className="badge-features">
                   {badge.features.map((feature, featureIndex) => (
                     <li key={featureIndex}>
