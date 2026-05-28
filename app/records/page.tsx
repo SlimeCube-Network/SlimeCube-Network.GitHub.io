@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { User } from '@supabase/supabase-js';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { HeaderCanvas } from '@/components/HeaderCanvas';
@@ -10,9 +11,9 @@ import NotFound from '../not-found';
 export default function PrivacyPolicyPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [user, setUser] = useState(null);
-  const [editingCell, setEditingCell] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [editingCell, setEditingCell] = useState<{ rowIndex: number; columnName: string } | null>(null);
   const [editValue, setEditValue] = useState('');
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function PrivacyPolicyPage() {
         setLoading(false);
       }
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An error occurred');
       setLoading(false);
     }
   };
@@ -47,13 +48,13 @@ export default function PrivacyPolicyPage() {
       if (fetchError) throw fetchError;
       setData(tableData || []);
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
   };
 
-  const formatIDR = (value) => {
+  const formatIDR = (value: number) => {
     if (!value && value !== 0) return '-';
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
@@ -66,32 +67,30 @@ export default function PrivacyPolicyPage() {
     return data.reduce((sum, row) => sum + (Number(row.Cost) || 0), 0);
   };
 
-  const handleCellEdit = (rowIndex, columnName, currentValue) => {
+  const handleCellEdit = (rowIndex: number, columnName: string, currentValue: unknown) => {
     if (!user) return;
     setEditingCell({ rowIndex, columnName });
-    setEditValue(currentValue);
+    setEditValue(String(currentValue));
   };
 
-  const saveEdit = async (rowIndex, columnName) => {
+  const saveEdit = async (rowIndex: number, columnName: string) => {
     try {
       const row = data[rowIndex];
       const updateData = { [columnName]: editValue };
 
-      // Update the row using all columns as identifiers
       const { error: updateError } = await supabase
         .from('Purchase_Records')
         .update(updateData)
-        .match(row); // Match the entire row
+        .match(row);
 
       if (updateError) throw updateError;
 
-      // Update local state
       const newData = [...data];
       newData[rowIndex][columnName] = editValue;
       setData(newData);
       setEditingCell(null);
     } catch (err) {
-      alert('Error saving: ' + err.message);
+      alert('Error saving: ' + (err instanceof Error ? err.message : 'An error occurred'));
     }
   };
 
@@ -122,7 +121,7 @@ export default function PrivacyPolicyPage() {
 
       setData([...data, insertedData[0]]);
     } catch (err) {
-      alert('Error adding row: ' + err.message);
+      alert('Error adding row: ' + (err instanceof Error ? err.message : 'An error occurred'));
     }
   };
 
@@ -132,7 +131,7 @@ export default function PrivacyPolicyPage() {
   if (!data.length) return <div>No data found</div>;
 
   const total = calculateTotal();
-  const hiddenColumns = ['Purchase Time']; // Hide Purchase Time column
+  const hiddenColumns = ['Purchase Time'];
   const visibleKeys = Object.keys(data[0]).filter(key => !hiddenColumns.includes(key));
 
   return (
@@ -171,7 +170,7 @@ export default function PrivacyPolicyPage() {
                                     {isEditing ? (
                                       <div style={{ display: 'flex', gap: '5px' }}>
                                         <input
-                                          type={key === 'Cost' ? 'number' : 'text'}
+                                          type={key === 'Cost' || key === 'Amount' ? 'number' : 'text'}
                                           value={editValue}
                                           onChange={(e) => setEditValue(e.target.value)}
                                           autoFocus
