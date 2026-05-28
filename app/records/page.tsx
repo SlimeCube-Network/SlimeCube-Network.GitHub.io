@@ -15,6 +15,7 @@ interface PurchaseRecord {
   'Item': string;
   'Amount': number;
   'Cost': number;
+  [key: string]: string | number;
 }
 
 export default function PrivacyPolicyPage() {
