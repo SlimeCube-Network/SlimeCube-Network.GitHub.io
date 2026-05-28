@@ -20,10 +20,10 @@
       "email": "contact@shiroharu.eu.org",
       "url": "https://shiroharu.eu.org"
     }
-    
   ],
   "license": "GPL-3.0",
   "dependencies": {
+    "@supabase/supabase-js": "^2.106.2",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6"
@@ -39,10 +39,10 @@
     "typescript": "6.0.3"
   },
   "tags": [
-    "Economy", 
-    "Adventure", 
-    "SlimeFun", 
-    "SMP", 
+    "Economy",
+    "Adventure",
+    "SlimeFun",
+    "SMP",
     "Survival"
   ]
 }
