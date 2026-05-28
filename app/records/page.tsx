@@ -8,8 +8,17 @@ import { HeaderCanvas } from '@/components/HeaderCanvas';
 import { supabase } from '@/lib/supabase';
 import NotFound from '../not-found';
 
+interface PurchaseRecord {
+  'Purchase Time': string;
+  'Username': string;
+  'Category': string;
+  'Item': string;
+  'Amount': number;
+  'Cost': number;
+}
+
 export default function PrivacyPolicyPage() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<PurchaseRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
