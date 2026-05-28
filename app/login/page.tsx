@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
@@ -14,7 +14,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setLoading(true);
@@ -26,7 +26,7 @@ export default function LoginPage() {
       if (error) throw error;
       router.push('/records');
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
