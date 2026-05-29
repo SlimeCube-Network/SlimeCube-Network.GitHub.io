@@ -25,43 +25,8 @@ const STAFF_GROUPS: StaffGroup[] = [
     ],
   },
   {
-    group: 'Manager',
-    members: [
-      {
-        name: 'Aziola',
-        img: '/images/staff/Aziola.png',
-      },
-    ],
-  },
-  {
-    group: 'Web Developer',
-    members: [
-      {
-        name: 'PhobosID',
-        img: '/images/staff/PhobosID.png',
-      },
-    ],
-  },
-  {
-    group: 'Builder',
-    members: [
-      {
-        name: 'MioBeau',
-        img: '/images/staff/MioBeau.png',
-      },
-    ],
-  },
-  {
     group: 'Admin',
     members: [
-      {
-        name: 'RAMA_wae',
-        img: '/images/staff/RAMA_wae.png',
-      },
-      {
-        name: 'Recha',
-        img: '/images/staff/Recha.png',
-      },
       {
         name: 'Cherienyx',
         img: '/images/staff/Cherienyx.png',
